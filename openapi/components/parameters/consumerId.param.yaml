@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/parameters/consumerId.param.yaml
+# -----------------------------------------------------------------------------
+name:     consumer-id
+in:       path
+required: true
+style:    simple
+explode:  false
+schema:
+  type:     string
+  format:   uuid
+  example:  304a2ce5-8c36-4d5e-a66e-7d15a7eb9506

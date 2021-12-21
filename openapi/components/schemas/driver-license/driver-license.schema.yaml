@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/driver-license/driver-license.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - id
+allOf:
+  - $ref: 'new-driver-license.schema.yaml'
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for driver license
+    example:      a455f1ee-6c54-4b01-90e6-d701748f0851

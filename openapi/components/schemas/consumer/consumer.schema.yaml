@@ -1,0 +1,13 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/consumer/consumer.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - id
+allOf: 
+  - $ref: './new-consumer.schema.yaml'
+properties:
+  id:
+    type:     string
+    format:   uuid
+    example:  d290f1ee-6c54-4b01-90e6-d701748f0851

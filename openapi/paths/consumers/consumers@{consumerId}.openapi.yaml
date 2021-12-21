@@ -1,0 +1,55 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/consumers/consumers@{consumerId}.openapi.yaml
+# -----------------------------------------------------------------------------
+get:
+  tags:
+    - Consumer
+  summary:      Retrieves a consumer details.
+  description:  >
+    Retrieves the consumer details by passing in the Consumer UUID.
+  parameters:
+    - $ref: '../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              consumer:
+                $ref: '../../components/schemas/consumer/consumer.schema.yaml'
+patch:
+  tags:
+    - Consumer
+  summary:      Updates an existing consumer
+  description:  Updates an existing consumer
+  parameters:
+    - $ref: '../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/consumer/new-consumer.schema.yaml'
+    description: Consumer fields to update.
+  responses:
+    '200':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            properties:
+              consumer:
+                $ref: '../../components/schemas/consumer/consumer.schema.yaml'
+delete:
+  tags:
+    - Consumer
+  summary:      Delete a Consumer
+  description:  Deletes a Consumer
+  parameters:
+    - $ref: '../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  responses:
+    '204':
+      description: 'OK'

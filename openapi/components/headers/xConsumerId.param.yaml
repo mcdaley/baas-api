@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/headers/xConsumerId.param.yaml
+# -----------------------------------------------------------------------------
+name:     X-Consumer-Id
+in:       header
+style:    simple
+explode:  false
+schema:
+  type:         string
+  format:       uuid
+  example:      ad52e774-753c-4633-ba2a-561a1b98387b
+  description:  Unique consumer uuid

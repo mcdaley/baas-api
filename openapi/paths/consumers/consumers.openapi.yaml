@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/consumers/consumers.openapi.yaml
+# -----------------------------------------------------------------------------
+post:
+  tags:
+    - Consumer
+  operationId:  createConsumer
+  summary:      Creates a new consumer
+  description:  >
+    Creates a new consumer in the system.
+  parameters:
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+    - $ref: '../../components/headers/xConsumerId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/consumer/new-consumer.schema.yaml'
+    description: New consumer to create
+  responses:
+    '201':
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            properties:
+              consumer:
+                $ref: '../../components/schemas/consumer/consumer.schema.yaml'

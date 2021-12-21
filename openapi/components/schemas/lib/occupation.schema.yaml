@@ -1,0 +1,8 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/lib/occupation.schema.yaml
+# -----------------------------------------------------------------------------
+type:     string
+enum:
+  - finance_accounting_tax
+  - lawyer
+example:  finance_accounting_tax

@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/contact/contact-list.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  contacts:
+    type: array
+    items:
+      $ref: './contact.schema.yaml'

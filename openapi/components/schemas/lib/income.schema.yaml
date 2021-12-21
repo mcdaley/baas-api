@@ -1,0 +1,8 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/lib/income.schema.yaml
+# -----------------------------------------------------------------------------
+type:     string
+enum:
+  - SALARY
+  - INHERITED
+example:  'SALARY'

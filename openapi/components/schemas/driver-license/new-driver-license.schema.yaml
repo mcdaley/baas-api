@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/driver-license/new-driver-license.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - number
+  - state
+  - country
+  - issue_date
+  - expiration_date
+properties:
+  number:
+    type:       string
+    minLength:  4
+    maxLength:  32
+    example:    CA94105
+  state:
+    $ref:       "../lib/state.schema.yaml"
+  country:
+    $ref:       "../lib/country.schema.yaml"
+  issue_date:
+    type:       string
+    format:     date
+    example:    '2017-07-21'
+  expiration_date:
+    type:       string
+    format:     date
+    example:    '2027-07-21'

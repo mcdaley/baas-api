@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/contact/contact.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - id
+allOf:
+  - $ref: './new-contact.schema.yaml'
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for the consumer contact details.
+    example:      22fac974-9cac-49e9-94db-9bd107a7d0fe

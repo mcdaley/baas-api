@@ -1,0 +1,18 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/contact/new-contact.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - type
+  - value
+properties:
+  type:
+    type:   string
+    enum:
+      - 'email'
+      - 'phone'
+    example: 'email'
+  value:
+    type:       string
+    maxLength:  128
+    example:    'john.doe@email.com'

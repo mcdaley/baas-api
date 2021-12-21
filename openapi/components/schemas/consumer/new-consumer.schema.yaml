@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/consumer/new-consumer.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+- first_name
+- last_name
+- ssn
+- dob
+- contact
+- citizenship_status
+- citizen_country
+- occupation
+- income
+- expected_activity
+- address
+- identification
+properties:
+  first_name:
+    type:     string
+    example:  John
+  last_name:
+    type:     string
+    example:  Doe
+  ssn:
+    type:     string
+    pattern:  '^\d{3}-\d{2}-\d{4}$'
+    example:  '555-44-9898'
+  dob:
+    type:     string
+    pattern:  '^\d{4}-\d{2}-\d{2}$'
+    example:  '1998-03-17'
+  contacts:
+    type:     array
+    items:
+      $ref:     '../contact/new-contact.schema.yaml'
+  citizenship_status:
+    type:     string
+    enum:
+      - us_citizen
+      - non_us_citizen
+  citizenship_country:
+    $ref:     '../lib/country.schema.yaml'
+  occupation:
+    $ref:     '../lib/occupation.schema.yaml'
+  income:
+    $ref:     '../lib/income.schema.yaml'
+  expected_activity:
+    $ref:     '../lib/expected-activity.schema.yaml'
+  address:
+    $ref:     '../address/new-address.schema.yaml'
+  identification:
+    type: object
+    properties:
+      document_type:
+        type: string
+        enum:
+          - driver_license
+          - passport
+      document:
+        oneOf:
+          - $ref: ../driver-license/new-driver-license.schema.yaml
+          - $ref: '../passport/new-passport.schema.yaml'

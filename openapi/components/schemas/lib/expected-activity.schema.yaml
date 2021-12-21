@@ -1,0 +1,8 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/lib/expected-activity.schema.yaml
+# -----------------------------------------------------------------------------
+type:     string
+enum:
+  - CASH
+  - SAVINGS
+example:  CASH

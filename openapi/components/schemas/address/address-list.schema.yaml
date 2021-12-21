@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/address/address-list.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+properties:
+  addresses:
+    type: array
+    items:
+      $ref: './address.schema.yaml'

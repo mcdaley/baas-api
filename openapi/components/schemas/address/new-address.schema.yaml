@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/address/new-address.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - type
+  - line1
+  - city
+  - state
+  - zip_code
+properties:
+  type:
+    type: string
+    enum:
+      - LEGAL
+      - POBOX
+    example:    "LEGAL"
+  line1:
+    type:       string
+    maxLength:  128
+    example:    "1 Market St."
+  line2:
+    type:       string
+    maxLength:  128
+  city:
+    type:       string
+    maxLength:  128
+    example:    "San Francisco"
+  state:
+    type:       string
+    $ref:       '../lib/state.schema.yaml'
+  zip_code:
+    type:       string
+    pattern:    '^d{5}$'
+    example:    "94105"

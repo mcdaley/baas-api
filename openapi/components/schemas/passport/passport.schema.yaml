@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/passport/passport.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - id
+allOf:
+  - $ref: './new-passport.schema.yaml'
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for a passport after it has been created
+    example:      a455f1ee-6c54-4b01-90e6-d701748f0851
