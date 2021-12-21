@@ -1,6 +1,8 @@
 # -----------------------------------------------------------------------------
 # openapi/paths/consumers/consumers@{consumerId}.openapi.yaml
 # -----------------------------------------------------------------------------
+
+# GET /consumers/{consumerId}
 get:
   tags:
     - Consumer
@@ -19,6 +21,8 @@ get:
             properties:
               consumer:
                 $ref: '../../components/schemas/consumer/consumer.schema.yaml'
+
+# PATCH /consumers/{consumerId}
 patch:
   tags:
     - Consumer

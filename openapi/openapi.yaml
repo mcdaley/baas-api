@@ -26,6 +26,8 @@ servers:
 tags:
   - name:         Consumer
     description:  Consumer resource APIs
+  - name:         Consumer Address
+    description:  Consumer Address resource APIs
   - name:         Business
     description:  Business resource APIs
   - name:         Account
@@ -36,7 +38,11 @@ paths:
   /consumers:
     $ref: './paths/consumers/consumers.openapi.yaml'
   /consumers/{consumerId}:
-    $ref: './paths/consumers/consumers@{consumerId}.openapi.yaml'
+    $ref: './paths/consumers/consumers-by-id.openapi.yaml'
+  /consumers/{consumerId}/addresses:
+    $ref: './paths/consumers/addresses/addresses.openapi.yaml'
+  /consumers/{consumerId}/addresses/{addressId}:
+    $ref: './paths/consumers/addresses/addresses-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

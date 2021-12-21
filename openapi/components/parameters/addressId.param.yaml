@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
-# openapi/components/parameters/consumerId.param.yaml
+# openapi/components/parameters/addressId.param.yaml
 # -----------------------------------------------------------------------------
-name:     consumerId
+name:     addressId
 in:       path
 required: true
 style:    simple
@@ -9,4 +9,4 @@ explode:  false
 schema:
   type:     string
   format:   uuid
-  example:  978268d4-ad96-4574-b257-0aa805e41197
+  example:  304a2ce5-8c36-4d5e-a66e-7d15a7eb9506

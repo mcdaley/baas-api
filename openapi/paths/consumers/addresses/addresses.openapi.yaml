@@ -1,0 +1,44 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/consumers@{consumerId}-addresses.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /consumers/{consumerId}/addresses
+get:
+  tags:
+    - Consumer Address
+  summary:      Retrieve all of a Consumer's addresses
+  description:  Retrieve all of a Consumer's addresses
+  parameters:
+    - $ref: '../../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/address/address-list.schema.yaml'
+
+# POST /consumers/{consumerId}/addresses
+post:
+  tags:
+    - Consumer Address
+  summary:      Create a new Consumer address 
+  description:  Create a new Consumer address
+  parameters:
+    - $ref: '../../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/address/new-address.schema.yaml'
+  responses:
+    '201':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              address:
+                $ref: '../../../components/schemas/address/address.schema.yaml'
