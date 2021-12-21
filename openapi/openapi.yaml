@@ -28,6 +28,10 @@ tags:
     description:  Consumer resource APIs
   - name:         Consumer Address
     description:  Consumer Address resource APIs
+  - name:         Consumer Contacts
+    description:  Consumer Contact resource APIs
+  - name:         Consumer Documents
+    description:  Consumer Identity Document APIs
   - name:         Business
     description:  Business resource APIs
   - name:         Account
@@ -43,6 +47,12 @@ paths:
     $ref: './paths/consumers/addresses/addresses.openapi.yaml'
   /consumers/{consumerId}/addresses/{addressId}:
     $ref: './paths/consumers/addresses/addresses-by-id.openapi.yaml'
+  /consumers/{consumerId}/contacts:
+    $ref: './paths/consumers/contacts/contacts.openapi.yaml'
+  /consumers/{consumerId}/contacts/{contactId}:
+    $ref: './paths/consumers/contacts/contacts-by-id.openapi.yaml'
+  /consumers/{consumerId}/documents:
+    $ref: './paths/consumers/documents/documents.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

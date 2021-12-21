@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/consumers/documents/documents.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# POST /consumers/{consumerId}/identity/documents
+post:
+  tags:
+    - Consumer Documents
+  summary:      Upload a consumer identity document
+  description:  Upload a consumer's passport or license needed to verify the consumer's identity.
+  parameters:
+    - $ref: '../../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/document/new-document.schema.yaml'
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type:         string
+                format:       uuid
+                description:  The UUID of the uploaded document

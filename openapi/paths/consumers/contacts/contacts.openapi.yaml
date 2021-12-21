@@ -1,13 +1,13 @@
 # -----------------------------------------------------------------------------
-# openapi/components/schemas/consumers/addresses/addresses.openapi.yaml
+# openapi/components/schemas/consumers/contacts/contacts.openapi.yaml
 # -----------------------------------------------------------------------------
 
-# GET /consumers/{consumerId}/addresses
+# GET /consumers/{consumerId}/contacts
 get:
   tags:
-    - Consumer Address
-  summary:      Retrieve all of a Consumer's addresses
-  description:  Retrieve all of a Consumer's addresses
+    - Consumer Contacts
+  summary:      Retrieve all of a Consumer's contact details
+  description:  Retrieve all of a Consumer's contact details
   parameters:
     - $ref: '../../../components/parameters/consumerId.param.yaml'
     - $ref: '../../../components/headers/xRequestId.param.yaml'
@@ -17,14 +17,14 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../../components/schemas/address/address-list.schema.yaml'
+            $ref: '../../../components/schemas/contact/contact-list.schema.yaml'
 
-# POST /consumers/{consumerId}/addresses
+# POST /consumers/{consumerId}/contacts
 post:
   tags:
-    - Consumer Address
-  summary:      Create a new Consumer address 
-  description:  Create a new Consumer address
+    - Consumer Contacts
+  summary:      Add contact details for a Consumer
+  description:  Add new email or phone number for a Consumer
   parameters:
     - $ref: '../../../components/parameters/consumerId.param.yaml'
     - $ref: '../../../components/headers/xRequestId.param.yaml'
@@ -32,7 +32,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../../../components/schemas/address/new-address.schema.yaml'
+          $ref: '../../../components/schemas/contact/new-contact.schema.yaml'
   responses:
     '201':
       description:  'OK'
@@ -40,5 +40,5 @@ post:
         application/json:
           schema:
             properties:
-              address:
-                $ref: '../../../components/schemas/address/address.schema.yaml'
+              contact:
+                $ref: '../../../components/schemas/contact/contact.schema.yaml'

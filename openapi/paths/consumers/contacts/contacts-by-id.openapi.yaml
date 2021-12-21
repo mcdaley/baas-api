@@ -1,0 +1,48 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/consumers/contacts/contacts-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /consumers/{consumerId}/contacts/{contactId}
+get:
+  tags:
+    - Consumer Contacts
+  summary:      Retrieve a Consumer contact details
+  description:  Retrieve a Consumer contact details
+  parameters:
+    - $ref: '../../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../../components/parameters/contactId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              contact:
+                $ref: '../../../components/schemas/contact/contact.schema.yaml'
+
+# PATCH /consumers/{consumerId}/contacts/{contactId}
+patch:
+  tags:
+    - Consumer Contacts
+  summary:      Update a Consumer contact details 
+  description:  Update a Consumer email or phone number
+  parameters:
+    - $ref: '../../../components/parameters/consumerId.param.yaml'
+    - $ref: '../../../components/parameters/contactId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/contact/new-contact.schema.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              contact:
+                $ref: '../../../components/schemas/contact/contact.schema.yaml'

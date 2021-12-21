@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/parameters/contactId.param.yaml
+# -----------------------------------------------------------------------------
+name:     contactId
+in:       path
+required: true
+style:    simple
+explode:  false
+schema:
+  type:     string
+  format:   uuid
+  example:  c9ef37de-e3ff-45a7-b7a5-f12d389ed27e

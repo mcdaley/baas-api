@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/document/new-document.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - file
+  - file_type
+  - verify_idv
+properties:
+  file:
+    type:         string
+    format:       byte    
+    description:  A base64 encoded string of the document.
+  file_type:
+    type:         string
+    enum:
+      - application/pdf
+      - jpg
+      - png
+    description:  Specify the type of the file. Supported file types are pdf, jpg, and png.
+    example:      'application/pdf'
+  verify_idv:
+    type:         string
+    enum:
+      - 'ssn'
+    description:  Fields that are being verified in the document
+    example:      'ssn'
