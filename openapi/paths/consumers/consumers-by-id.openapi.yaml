@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# openapi/paths/consumers/consumers@{consumerId}.openapi.yaml
+# openapi/paths/consumers/consumers-by-id.openapi.yaml
 # -----------------------------------------------------------------------------
 
 # GET /consumers/{consumerId}
@@ -21,6 +21,16 @@ get:
             properties:
               consumer:
                 $ref: '../../components/schemas/consumer/consumer.schema.yaml'
+    '400':
+      $ref: '../../components/responses/400.bad-request.response.yaml'
+    '401':
+      $ref: '../../components/responses/401.unauthorized.response.yaml'
+    '403':
+      $ref: '../../components/responses/403.forbidden.response.yaml'
+    '404':
+      $ref: '../../components/responses/404.not-found.response.yaml'
+    '500':
+      $ref: '../../components/responses/500.server-error.response.yaml'
 
 # PATCH /consumers/{consumerId}
 patch:
@@ -46,6 +56,18 @@ patch:
             properties:
               consumer:
                 $ref: '../../components/schemas/consumer/consumer.schema.yaml'
+    '400':
+      $ref: '../../components/responses/400.bad-request.response.yaml'
+    '401':
+      $ref: '../../components/responses/401.unauthorized.response.yaml'
+    '403':
+      $ref: '../../components/responses/403.forbidden.response.yaml'
+    '404':
+      $ref: '../../components/responses/404.not-found.response.yaml'
+    '500':
+      $ref: '../../components/responses/500.server-error.response.yaml'
+
+# DELETE /consumers/{consumerId}
 delete:
   tags:
     - Consumer
@@ -57,3 +79,13 @@ delete:
   responses:
     '204':
       description: 'OK'
+    '400':
+      $ref: '../../components/responses/400.bad-request.response.yaml'
+    '401':
+      $ref: '../../components/responses/401.unauthorized.response.yaml'
+    '403':
+      $ref: '../../components/responses/403.forbidden.response.yaml'
+    '404':
+      $ref: '../../components/responses/404.not-found.response.yaml'
+    '500':
+      $ref: '../../components/responses/500.server-error.response.yaml'
