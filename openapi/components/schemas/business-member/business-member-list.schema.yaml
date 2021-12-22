@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/business-member/business-member-list.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  members:
+    type: array
+    items:
+      $ref: './business-member.schema.yaml'

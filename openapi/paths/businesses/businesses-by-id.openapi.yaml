@@ -1,0 +1,47 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/businesses-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /businesses/{businessId}
+get:
+  tags:
+    - Business
+  summary:      Get Business details
+  description:  >
+    Return a single instance of a business.
+  parameters:
+    - $ref:     '../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              business:
+                $ref: '../../components/schemas/business/business.schema.yaml'
+
+# PATCH /businesses/{businessId}
+patch:
+  tags:
+    - Business
+  summary:      Update a business
+  description:  Update a business
+  parameters:
+    - $ref:     '../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/business/new-business.schema.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            properties:
+              business:
+                $ref: '../../components/schemas/business/business.schema.yaml'

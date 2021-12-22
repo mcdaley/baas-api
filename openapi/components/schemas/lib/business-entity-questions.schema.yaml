@@ -1,0 +1,60 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/lib/business-entity-questions.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+properties:
+  affiliate:
+    type: string
+    enum:
+      - yes
+      - no
+  private_atm:
+    type: string
+    enum:
+      - yes
+      - no
+  internet_gambling:
+    type: string
+    enum:
+      - yes
+      - no
+  internet_gambling_agreement":
+    type: string
+    enum:
+      - yes
+      - no
+  internet_gambling_notification:
+    type: string
+    enum:
+      - yes
+      - no
+  check_casher:
+    type: string
+    enum:
+      - yes
+      - no
+  check_casher_greater_allowed_amount:
+    type: string
+    enum:
+      - yes
+      - no
+  international_affairs:
+    type: string
+    enum:
+      - yes
+      - no
+  card_games:
+    type: string
+    enum:
+      - yes
+      - no
+  pep:
+    type: string
+    enum:
+      - yes
+      - no
+  attestation:
+    type: string
+    enum:
+      - yes
+      - no

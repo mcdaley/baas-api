@@ -1,0 +1,26 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/businesses.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# POST /businesses    
+post:
+  tags:
+    - Business
+  summary:      Create a business
+  description:  Create a business
+  parameters:
+    - $ref:     '../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/business/new-business.schema.yaml'
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            properties:
+              business:
+                $ref: '../../components/schemas/business/business.schema.yaml'

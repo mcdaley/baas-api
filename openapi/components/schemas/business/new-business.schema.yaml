@@ -1,0 +1,59 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/business/new-business.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - legal_name
+  - tin_type
+  - tin_number
+properties:
+  legal_name:
+    type:       string
+    maxLength:  128
+    example:    Acme LLC.
+  tin_type:
+    type:       string
+    enum:
+      - ein
+    example:    "ein"
+  tin_number:
+    type:       string
+    example:    XYZ987654321
+  entity_type:
+    type:       string
+    enum:
+      - sole_proprietor
+      - llc
+      - corporation
+  industry_type:
+    type:       string
+    enum:
+      - colleges_universities_and_schools
+      - financial_services
+      - travel
+      - consumer_goods
+  contacts:
+    type: array
+    items:
+      $ref: '../contact/new-contact.schema.yaml'
+  purpose:
+    type:       string
+    enum:
+      - registrationPurpose
+  expected_activities:
+    type:       string
+    enum:
+      - check
+      - unknown
+  members:
+    type:       array
+    items:
+      $ref:     '../business-member/new-business-member.schema.yaml'
+  addresses:
+    type:       array
+    items:
+      $ref:     '../address/new-address.schema.yaml'
+  entity_formation:
+    $ref:       '../lib/business-entity-formation.schema.yaml'
+  questions:
+    $ref:       '../lib/business-entity-questions.schema.yaml'

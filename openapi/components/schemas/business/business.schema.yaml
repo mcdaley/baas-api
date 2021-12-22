@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/business/business.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - id
+allOf:
+  - $ref:         './new-business.schema.yaml'
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for the business
+    example:      dd1ebb85-dc27-46ba-a4ac-3d3f38dcde2c

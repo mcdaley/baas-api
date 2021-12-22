@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/parameters/businessId.param.yaml
+# -----------------------------------------------------------------------------
+name:     businessId
+in:       path
+required: true
+style:    simple
+explode:  false
+schema:
+  type:     string
+  format:   uuid
+  example:  c134f611-c064-43b8-9536-63a2709a6a10

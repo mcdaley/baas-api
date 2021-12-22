@@ -1,0 +1,13 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/business-member/business-member.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - id
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for the business
+allOf:
+  - $ref: './new-business-member.schema.yaml'

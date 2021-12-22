@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/addresses/addresses.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /businesses/{businessId}/addresses
+get:
+  tags:
+    - Business Addresses
+  summary:      Retrieve all of a Business's addresses
+  description:  Retrieve all of a Business's addresses
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/address/address-list.schema.yaml'

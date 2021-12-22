@@ -34,6 +34,8 @@ tags:
     description:  Consumer Identity Document APIs
   - name:         Business
     description:  Business resource APIs
+  - name:         Business Addresses
+    description:  Business Addresses resource APIs
   - name:         Account
     description:  Bank Account resource APIs
   - name:         Transaction
@@ -53,6 +55,14 @@ paths:
     $ref: './paths/consumers/contacts/contacts-by-id.openapi.yaml'
   /consumers/{consumerId}/documents:
     $ref: './paths/consumers/documents/documents.openapi.yaml'
+  /businesses:
+    $ref: './paths/businesses/businesses.openapi.yaml'
+  /businesses/{businessId}:
+    $ref: './paths/businesses/businesses-by-id.openapi.yaml'
+  /businesses/{businessId}/addresses:
+    $ref: './paths/businesses/addresses/addresses.openapi.yaml'
+  /businesses/{businessId}/addresses/{addressId}:
+    $ref: './paths/businesses/addresses/addresses-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

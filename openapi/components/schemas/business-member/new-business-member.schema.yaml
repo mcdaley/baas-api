@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/business-member/new-business-member.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - user_id
+  - user_type
+  - title
+properties:
+  user_id:
+    type:         string
+    format:       uuid
+    description:  >
+      Unique identifier for user w/ access to the business account. User must
+      already be registered in system.
+    example:      a1c011b5-cc1c-4917-b96a-ecd49de39d1a
+  user_type:
+    type:         string
+    enum:
+      - control_manager
+    example:      control_manager
+  title:
+    type:         string
+    maxLength:    128
+    example:      The Big Cheese
+  title_description:
+    type:         string
+    maxLength:    256
+    example:      In charge of all the moolah

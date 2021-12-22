@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/lib/business-entity-formation.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - document
+  - number
+  - issuer
+  - issue_date
+  - expiration_date
+  - business_operation
+  - origin_state
+  - origin_country
+  - origin_date
+properties:
+  document:
+    type:         string
+    enum:
+      - certificate_of_limited_partnership
+    description:  Business registration document fields
+    example:      certificate_of_limited_partnership
+  number:
+    type:         string
+    maxLength:    128
+    description:  Business identifier provided by issuer of the document
+    example:      123456789012339
+  state:
+    $ref:         './state.schema.yaml'
+  country:
+    $ref:         './country.schema.yaml'
+  issuer:
+    type:         string
+    minLength:    2
+    maxLength:    64
+    description:  Government or agency that issued the business registration document.
+    example:      CA
+  issue_date:
+    type:         string
+    format:       date
+    description:  The date the business was registered by the government
+    example:      2021-03-17
+  expiration_date:
+    type:         string
+    format:       date
+    description:  The date the business registration document expires
+    example:      '2031-03-17'
+  business_operation:
+    type:         string
+    enum:
+      - local_business
+    description:  Describes the business operations
+    example:      local_business
+  origin_country:
+    $ref:         './country.schema.yaml'
+  origin_state:
+    $ref:         './state.schema.yaml'
