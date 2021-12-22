@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/members/members.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /businesses/{businessId}/members
+get:
+  tags:
+    - Business Members
+  summary:      Retrieve all the Members of a Business
+  description:  Retrieve all the Members of a Business
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/business-member/business-member-list.schema.yaml'
+
+# PUT /businesses/{businessId}/members
+put:
+  tags:
+    - Business Members
+  summary:      Update the Members of a Business
+  description:  >
+    Update the Members of a Business. __The logic for updating a business 
+    member seems wrong. I would think that the API would allow a single
+    business member to be edited/deleted instead of editing all of the 
+    business members.__
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/business-member/business-member-list.schema.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/business-member/business-member-list.schema.yaml'
