@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/contacts/contacts.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /businesses/{businessId}/contacts
+get:
+  tags:
+    - Business Contacts
+  summary:      Retrieve all of a Business's contacts
+  description:  Retrieve all of a Business's contacts
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/contact/contact-list.schema.yaml'

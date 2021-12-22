@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/businesses/contacts/contacts-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /businesses/{businessId}/contacts/{contactId}
+get:
+  tags:
+    - Business Contacts
+  summary:      Retrieve a Business contact
+  description:  Retrieve a Business contact
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/parameters/contactId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              contact:
+                $ref: '../../../components/schemas/contact/contact.schema.yaml'
+
+# PATCH /business/{businessId}/contacts/{contactId}
+patch:
+  tags:
+    - Business Contacts
+  summary:      Update a Business contact
+  description:  Update a Business contact
+  parameters:
+    - $ref:     '../../../components/parameters/businessId.param.yaml'
+    - $ref:     '../../../components/parameters/contactId.param.yaml'
+    - $ref:     '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            contact:
+              $ref: '../../../components/schemas/contact/new-contact.schema.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              contact:
+                $ref: '../../../components/schemas/contact/contact.schema.yaml'

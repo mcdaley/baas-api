@@ -38,6 +38,8 @@ tags:
     description:  Business Addresses resource APIs
   - name:         Business Members
     description:  Business Members resource APIs
+  - name:         Business Contacts
+    description:  Business Contacts resource APIs
   - name:         Account
     description:  Bank Account resource APIs
   - name:         Transaction
@@ -67,6 +69,10 @@ paths:
     $ref: './paths/businesses/addresses/addresses-by-id.openapi.yaml'
   /businesses/{businessId}/members:
     $ref: './paths/businesses/members/members.openapi.yaml'
+  /businesses/{businessId}/contacts:
+    $ref: './paths/businesses/contacts/contacts.openapi.yaml'
+  /businesses/{businessId}/contacts/{contactId}:
+    $ref: './paths/businesses/contacts/contacts-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:
