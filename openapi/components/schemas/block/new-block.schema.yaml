@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/block/new-block.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - block_type
+properties:
+  block_type:
+    type:   string
+    enum:
+      - credits
+      - debits
+      - checks
+      - all
+    description:  Specifies types of transactions that are blocked
+    example:      debits
+  block_reason:
+    type:         string
+    maxLength:    64
+    description:  Reason for Account Block
+    example:      Suspected fraud

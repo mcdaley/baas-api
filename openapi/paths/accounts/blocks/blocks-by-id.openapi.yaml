@@ -1,0 +1,19 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/blocks/blocks-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# DELETE /accounts/{accountId}/blocks/{blockId}
+delete:
+  tags:
+    - Account Blocks
+  summary:      Delete an Account Block
+  description:  >
+    Deletes an Account Block by creating a new Account Block with status equal to 
+    cancelled which removes the Account Block.
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/parameters/blockId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '204':
+      description: 'OK'

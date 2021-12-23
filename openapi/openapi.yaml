@@ -42,6 +42,12 @@ tags:
     description:  Business Contacts resource APIs
   - name:         Account
     description:  Bank Account resource APIs
+  - name:         Account Participants
+    description:  Account Particpants resource APIs
+  - name:         Account Blocks
+    description:  Account Blocks resource APIs
+  - name:         Account Statements
+    description:  Account Statements resource APIs
   - name:         Transaction
     description:  Transactions for a bank account APIs
 paths:
@@ -77,6 +83,14 @@ paths:
     $ref: './paths/accounts/accounts.openapi.yaml'
   /accounts/{accountId}:
     $ref: './paths/accounts/accounts-by-id.openapi.yaml'
+  /accounts/{accountId}/participants:
+    $ref: './paths/accounts/participants/participants.openapi.yaml'
+  /accounts/{accountId}/participants/{participantId}:
+    $ref: './paths/accounts/participants/participants-by-id.openapi.yaml'
+  /accounts/{accountId}/blocks:
+    $ref: './paths/accounts/blocks/blocks.openapi.yaml'
+  /accounts/{accountId}/blocks/{blockId}:
+    $ref: './paths/accounts/blocks/blocks-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

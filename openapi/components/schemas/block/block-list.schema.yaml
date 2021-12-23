@@ -1,0 +1,10 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/block/block-list.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+properties:
+  blocks:
+    type:       array
+    items:
+      $ref: './block.schema.yaml'
+    description: All of the Account Blocks added to an Account

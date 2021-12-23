@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/blocks/blocks.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# POST /accounts/{accountId}/blocks
+post:
+  tags:
+    - Account Blocks
+  summary:      Create an Account Block
+  description:  Create an Account Block
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    description:  The new Account Block
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/block/new-block.schema.yaml'
+  responses:
+    '201':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              block:
+                $ref: '../../../components/schemas/block/block.schema.yaml'
+
+# GET /accounts/{accountId}/blocks
+get:
+  tags:
+    - Account Blocks
+  summary:      Retrieve all the Blocks for an Account
+  description:  Retrieve all the Blocks for an Account
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/block/block-list.schema.yaml'

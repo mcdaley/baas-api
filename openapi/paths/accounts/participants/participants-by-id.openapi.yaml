@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/participants/participants-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+delete:
+  tags:
+    - Account Participants
+  summary:      Remove a Participant from an Account
+  description:  Remove a Participant from an Account
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/parameters/participantId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '204':
+      description: 'OK'

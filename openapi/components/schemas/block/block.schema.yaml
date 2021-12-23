@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/block/block.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+required:
+  - id
+allOf:
+  - $ref: './new-block.schema.yaml'
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique identifier for an Account Block
+    example:      6b66bcc3-8e61-455f-97fa-5d276bd20d34
+  block_status:
+    type:         string
+    enum:
+      - active
+      - cancelled
+    description:  The Account Block status
+    example:      cancelled

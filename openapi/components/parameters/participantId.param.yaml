@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/parameters/participantId.param.yaml
+# -----------------------------------------------------------------------------
+name:     participantId
+in:       path
+required: true
+style:    simple
+explode:  false
+schema:
+  type:     string
+  format:   uuid
+  example:  b1a2f0de-ac4b-44b9-8ec0-12c794e0fb75

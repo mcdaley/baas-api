@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/participants/participants.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /accounts/{accountId}/participants
+get:
+  tags:
+    - Account Participants
+  summary:      Retrieve participants for an Account
+  description:  Retrieve participants for an Account
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/participant/participant-list.schema.yaml'
+
+# POST /accounts/{accountId}/participants
+post:
+  tags:
+    - Account Participants
+  summary:      Add a new Participant to an Account
+  description:  Add a new Participant to an Account, where the Participant must be a valid Consumer
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    description:  New Participant for an account
+    required:     true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/participant/new-participant.schema.yaml'
+  responses:
+    '201':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              participant:
+                $ref: '../../../components/schemas/participant/participant.schema.yaml'
