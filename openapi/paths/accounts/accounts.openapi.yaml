@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/accounts.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# POST /accounts
+post:
+  tags:
+    - Account
+  summary:      Create a new checking or savings account
+  description:  Create a new checking or savings account
+  parameters:
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/account/new-account.schema.yaml'
+  responses:
+    '201':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              account:
+                $ref: '../../components/schemas/account/account.schema.yaml'
+
+# GET /accounts
+get:
+  tags:
+    - Account
+  summary:      Retrieve all of a user's accounts
+  description:  Retrieve all of a user's accounts
+  parameters:
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/account/account-list.schema.yaml'

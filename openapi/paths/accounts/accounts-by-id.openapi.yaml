@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/accounts-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /accounts/{accountId}
+get:
+  tags:
+    - Account
+  summary:      Retrieve the account details
+  description:  Retrieve the account details
+  parameters:
+    - $ref: '../../components/parameters/accountId.param.yaml'
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              account:
+                $ref: '../../components/schemas/account/account.schema.yaml'
+
+# PATCH /accounts/{accountId
+patch:
+  tags:
+    - Account
+  summary:      Update the account
+  description:  Update the account
+  parameters:
+    - $ref: '../../components/parameters/accountId.param.yaml'
+    - $ref: '../../components/headers/xRequestId.param.yaml'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/account/update-account.schema.yaml'
+  responses:
+    '200':
+      description:  'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              account:
+                $ref: '../../components/schemas/account/account.schema.yaml'

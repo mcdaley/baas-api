@@ -1,0 +1,22 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/account/new-account.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+required:
+  - account_type
+properties:
+  account_type:
+    type:         string
+    enum:
+      - Checking
+      - Savings
+    description:  Either checking or savings account
+    example:      checking
+  multiple_participants:
+    type:         string
+    format:       boolean
+    example:      false
+  participants:
+    type:         array
+    items:
+      $ref: '../participant/new-participant.schema.yaml' 

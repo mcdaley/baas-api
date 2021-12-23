@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/participant/participant.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique id for participant
+    example:      ba99c741-b7a2-4ed8-a5ee-1081620bd896
+allOf:
+  - $ref: './new-participant.schema.yaml'

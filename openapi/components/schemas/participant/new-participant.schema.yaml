@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/participant/new-participant.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  participant_user_id:
+    type:         string
+    format:       uuid
+    description:  Unique Consumer Id for the account participant
+    example:      639f313f-6187-4adc-b898-935f8d20db0b
+  participant_role:
+    type:         string
+    enum:
+      - holder
+      - authorized
+      - beneficiary
+    example:      holder

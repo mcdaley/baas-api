@@ -73,6 +73,10 @@ paths:
     $ref: './paths/businesses/contacts/contacts.openapi.yaml'
   /businesses/{businessId}/contacts/{contactId}:
     $ref: './paths/businesses/contacts/contacts-by-id.openapi.yaml'
+  /accounts:
+    $ref: './paths/accounts/accounts.openapi.yaml'
+  /accounts/{accountId}:
+    $ref: './paths/accounts/accounts-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

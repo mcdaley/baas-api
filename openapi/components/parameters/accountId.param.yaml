@@ -1,0 +1,12 @@
+# -----------------------------------------------------------------------------
+# openapi/components/parameters/accountId.param.yaml
+# -----------------------------------------------------------------------------
+name:     accountId
+in:       path
+required: true
+style:    simple
+explode:  false
+schema:
+  type:     string
+  format:   uuid
+  example:  abca1d03-d85f-4c80-955b-1d392fab1d90

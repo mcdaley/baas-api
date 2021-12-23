@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/participant/participant-list.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  participancts:
+    type: array
+    items:
+      $ref: './participant.schema.yaml'
