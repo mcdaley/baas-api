@@ -95,6 +95,8 @@ paths:
     $ref: './paths/accounts/statements/statements.openapi.yaml'
   /accounts/{accountId}/statements/{statementId}:
     $ref: './paths/accounts/statements/statements-by-id.openapi.yaml'
+  /accounts/{accountId}/transactions:
+    $ref: './paths/accounts/transactions/transactions.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

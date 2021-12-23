@@ -1,0 +1,9 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/transaction/transaction-list.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+properties:
+  transactions:
+    type:   array
+    items:
+      $ref: '../../../components/schemas/transaction/transaction.schema.yaml'

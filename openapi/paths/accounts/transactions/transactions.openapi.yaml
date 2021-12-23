@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/transactions/transactions.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /accounts/{accountId}/trnsactions
+get:
+  tags:
+    - Transaction
+  summary:      Retrieve the transactions for an account
+  description:  Retrieve the transactions for an account
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/schemas/transaction/transaction-list.schema.yaml'
+
