@@ -1,0 +1,10 @@
+# -----------------------------------------------------------------------------
+# openapi/components/statement/statement-list.schema.yaml
+# -----------------------------------------------------------------------------
+type:   object
+description:  List of account statements
+properties:
+  statements:
+    type:   array
+    items:
+      $ref: './statement-metadata.schema.yaml'

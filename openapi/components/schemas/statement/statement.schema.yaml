@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------
+# openapi/components/statement/statement.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+allOf:
+  - $ref: './statement-metadata.schema.yaml'
+properties:
+  content_type:
+    type:         string
+    enum:
+      - application/pdf
+    description:  The format for the document.
+    example:      /application/pdf
+  document:
+    type:         string
+    format:       byte
+    description:  Document formatted as a Base64 string

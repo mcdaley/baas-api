@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------------
+# openapi/paths/accounts/statements/statements-by-id.openapi.yaml
+# -----------------------------------------------------------------------------
+
+# GET /accounts/{accountId}/statements/{statementId}
+get:
+  tags:
+    - Account Statements
+  summary:      Retrieve an Account Statement
+  description:  Retrieve an Account Statement
+  parameters:
+    - $ref: '../../../components/parameters/accountId.param.yaml'
+    - $ref: '../../../components/parameters/statementId.param.yaml'
+    - $ref: '../../../components/headers/xRequestId.param.yaml'
+  responses:
+    '200':
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            properties:
+              statement:
+                $ref: '../../../components/schemas/statement/statement.schema.yaml'

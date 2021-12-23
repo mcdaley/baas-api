@@ -91,6 +91,10 @@ paths:
     $ref: './paths/accounts/blocks/blocks.openapi.yaml'
   /accounts/{accountId}/blocks/{blockId}:
     $ref: './paths/accounts/blocks/blocks-by-id.openapi.yaml'
+  /accounts/{accountId}/statements:
+    $ref: './paths/accounts/statements/statements.openapi.yaml'
+  /accounts/{accountId}/statements/{statementId}:
+    $ref: './paths/accounts/statements/statements-by-id.openapi.yaml'
 components:
   securitySchemes:
     main_auth:

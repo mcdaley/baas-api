@@ -1,0 +1,20 @@
+# -----------------------------------------------------------------------------
+# openapi/components/statement/statement-metadata.schema.yaml
+# -----------------------------------------------------------------------------
+type: object
+properties:
+  id:
+    type:         string
+    format:       uuid
+    description:  Unique statement identifier
+    example:      d3a37d65-9214-4741-b847-f79d693c6ffd
+  start_date:
+    type:         string
+    format:       date
+    description:  Starting date for the Account Statement
+    example:      '2021-10-01'
+  end_date:
+    type:         string
+    format:       date
+    description:  Ending date for the Account Statement
+    example:      '2021-10-31'
