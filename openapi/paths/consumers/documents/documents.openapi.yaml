@@ -15,7 +15,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../../../components/schemas/document/new-document.schema.yaml'
+          $ref: '../../../components/schemas/document/document.schema.yaml#/NewDocument'
   responses:
     '201':
       description: OK

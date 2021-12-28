@@ -1,0 +1,55 @@
+# -----------------------------------------------------------------------------
+# openapi/components/schemas/document/document.schema.yaml
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# TODO: 12/28/2021
+# THE FILE SHOWS HOW TO INCLUDE ALL RESOURCE REFERENCES IN A SINGLE FILE
+# INSTEAD OF A FILE FOR EACH RESOURCE. AN EXAMPLE OF REFERENCING THE
+# NewDocument CLASS IS: 
+#
+#   $ref: './document.schema.yaml#/NewDocument'
+#
+# NOT SURE IF THIS IS A BETTER SOLUTION OR NOT.
+# -----------------------------------------------------------------------------
+
+# New Document
+NewDocument:
+  type: object
+  required:
+    - file
+    - file_type
+    - verify_idv
+  properties:
+    file:
+      type:         string
+      format:       byte    
+      description:  A base64 encoded string of the document.
+    file_type:
+      type:         string
+      enum:
+        - application/pdf
+        - jpg
+        - png
+      description:  Specify the type of the file. Supported file types are pdf, jpg, and png.
+      example:      'application/pdf'
+    verify_idv:
+      type:         string
+      enum:
+        - 'ssn'
+      description:  Fields that are being verified in the document
+      example:      'ssn'
+
+# Document
+Document: 
+  type: object
+  required:
+    - id 
+  allOf:
+    $ref '#/NewDocumet'
+  properties:
+    id:
+      type:         string 
+      format:       uuid
+      description:  Unique document identifier 
+      examepl:      xcz567
