@@ -1,0 +1,1730 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Example.com
+  termsOfService: https://example.com/terms/
+  contact:
+    email: contact@example.com
+    url: http://example.com/contact
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://redocly.github.io/openapi-template/logo.png
+  description: >
+    Protoype BaaS APIs for starting ConNext Bank APIs. The prototype contains
+    the Consumer, Business, Accounts, Transactions, and Card APIs.
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: https://github.com/Rebilly/generator-openapi-repo
+servers:
+  - url: http://example.com/api/v1
+  - url: https://example.com/api/v1
+tags:
+  - name: Consumer
+    description: Consumer resource APIs
+  - name: Consumer Address
+    description: Consumer Address resource APIs
+  - name: Consumer Contacts
+    description: Consumer Contact resource APIs
+  - name: Consumer Documents
+    description: Consumer Identity Document APIs
+  - name: Business
+    description: Business resource APIs
+  - name: Business Addresses
+    description: Business Addresses resource APIs
+  - name: Business Members
+    description: Business Members resource APIs
+  - name: Business Contacts
+    description: Business Contacts resource APIs
+  - name: Account
+    description: Bank Account resource APIs
+  - name: Account Participants
+    description: Account Particpants resource APIs
+  - name: Account Blocks
+    description: Account Blocks resource APIs
+  - name: Account Statements
+    description: Account Statements resource APIs
+  - name: Transaction
+    description: Transactions for a bank account APIs
+paths:
+  /consumers:
+    post:
+      tags:
+        - Consumer
+      operationId: createConsumer
+      summary: Creates a new consumer
+      description: |
+        Creates a new consumer in the system.
+      parameters:
+        - $ref: '#/components/parameters/xRequestId'
+        - $ref: '#/components/parameters/xConsumerId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-consumer'
+        description: New consumer to create
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/consumer'
+  /consumers/{consumerId}:
+    get:
+      tags:
+        - Consumer
+      summary: Retrieves a consumer details.
+      description: |
+        Retrieves the consumer details by passing in the Consumer UUID.
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/consumer'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      tags:
+        - Consumer
+      summary: Updates an existing consumer
+      description: Updates an existing consumer
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-consumer'
+        description: Consumer fields to update.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/consumer'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      tags:
+        - Consumer
+      summary: Delete a Consumer
+      description: Deletes a Consumer
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+  /consumers/{consumerId}/addresses:
+    get:
+      tags:
+        - Consumer Address
+      summary: Retrieve all of a Consumer's addresses
+      description: Retrieve all of a Consumer's addresses
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/address-list'
+    post:
+      tags:
+        - Consumer Address
+      summary: Create a new Consumer address
+      description: Create a new Consumer address
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-address'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  address:
+                    $ref: '#/components/schemas/address'
+  /consumers/{consumerId}/addresses/{addressId}:
+    get:
+      tags:
+        - Consumer Address
+      summary: Retrieve a Consumer address
+      description: Retrieve a Consumer address
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/addressId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  address:
+                    $ref: '#/components/schemas/address'
+    patch:
+      tags:
+        - Consumer Address
+      summary: Update a Consumer address
+      description: Update a Consumer address
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/addressId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-address'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  address:
+                    $ref: '#/components/schemas/address'
+  /consumers/{consumerId}/contacts:
+    get:
+      tags:
+        - Consumer Contacts
+      summary: Retrieve all of a Consumer's contact details
+      description: Retrieve all of a Consumer's contact details
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contact-list'
+    post:
+      tags:
+        - Consumer Contacts
+      summary: Add contact details for a Consumer
+      description: Add new email or phone number for a Consumer
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-contact'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  contact:
+                    $ref: '#/components/schemas/contact'
+  /consumers/{consumerId}/contacts/{contactId}:
+    get:
+      tags:
+        - Consumer Contacts
+      summary: Retrieve a Consumer contact details
+      description: Retrieve a Consumer contact details
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/contactId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  contact:
+                    $ref: '#/components/schemas/contact'
+    patch:
+      tags:
+        - Consumer Contacts
+      summary: Update a Consumer contact details
+      description: Update a Consumer email or phone number
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/contactId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-contact'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  contact:
+                    $ref: '#/components/schemas/contact'
+  /consumers/{consumerId}/documents:
+    post:
+      tags:
+        - Consumer Documents
+      summary: Upload a consumer identity document
+      description: >-
+        Upload a consumer's passport or license needed to verify the consumer's
+        identity.
+      parameters:
+        - $ref: '#/components/parameters/consumerId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDocument'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: The UUID of the uploaded document
+  /businesses:
+    post:
+      tags:
+        - Business
+      summary: Create a business
+      description: Create a business
+      parameters:
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-business'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  business:
+                    $ref: '#/components/schemas/business'
+  /businesses/{businessId}:
+    get:
+      tags:
+        - Business
+      summary: Get Business details
+      description: |
+        Return a single instance of a business.
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  business:
+                    $ref: '#/components/schemas/business'
+    patch:
+      tags:
+        - Business
+      summary: Update a business
+      description: Update a business
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-business'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  business:
+                    $ref: '#/components/schemas/business'
+  /businesses/{businessId}/addresses:
+    get:
+      tags:
+        - Business Addresses
+      summary: Retrieve all of a Business's addresses
+      description: Retrieve all of a Business's addresses
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/address-list'
+  /businesses/{businessId}/addresses/{addressId}:
+    get:
+      tags:
+        - Business Addresses
+      summary: Retrieve a Business address
+      description: Retrieve a Business address
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/addressId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  address:
+                    $ref: '#/components/schemas/address'
+    patch:
+      tags:
+        - Business Addresses
+      summary: Update a Business address
+      description: Update a Business address
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/addressId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-address'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  address:
+                    $ref: '#/components/schemas/address'
+  /businesses/{businessId}/members:
+    get:
+      tags:
+        - Business Members
+      summary: Retrieve all the Members of a Business
+      description: Retrieve all the Members of a Business
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/business-member-list'
+    put:
+      tags:
+        - Business Members
+      summary: Update the Members of a Business
+      description: >
+        Update the Members of a Business. __The logic for updating a business 
+        member seems wrong. I would think that the API would allow a single
+        business member to be edited/deleted instead of editing all of the 
+        business members.__
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/business-member-list'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/business-member-list'
+  /businesses/{businessId}/contacts:
+    get:
+      tags:
+        - Business Contacts
+      summary: Retrieve all of a Business's contacts
+      description: Retrieve all of a Business's contacts
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contact-list'
+  /businesses/{businessId}/contacts/{contactId}:
+    get:
+      tags:
+        - Business Contacts
+      summary: Retrieve a Business contact
+      description: Retrieve a Business contact
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/contactId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  contact:
+                    $ref: '#/components/schemas/contact'
+    patch:
+      tags:
+        - Business Contacts
+      summary: Update a Business contact
+      description: Update a Business contact
+      parameters:
+        - $ref: '#/components/parameters/businessId'
+        - $ref: '#/components/parameters/contactId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                contact:
+                  $ref: '#/components/schemas/new-contact'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  contact:
+                    $ref: '#/components/schemas/contact'
+  /accounts:
+    post:
+      tags:
+        - Account
+      summary: Create a new checking or savings account
+      description: Create a new checking or savings account
+      parameters:
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-account'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  account:
+                    $ref: '#/components/schemas/account'
+    get:
+      tags:
+        - Account
+      summary: Retrieve all of a user's accounts
+      description: Retrieve all of a user's accounts
+      parameters:
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account-list'
+  /accounts/{accountId}:
+    get:
+      tags:
+        - Account
+      summary: Retrieve the account details
+      description: Retrieve the account details
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  account:
+                    $ref: '#/components/schemas/account'
+    patch:
+      tags:
+        - Account
+      summary: Update the account
+      description: Update the account
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update-account'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  account:
+                    $ref: '#/components/schemas/account'
+  /accounts/{accountId}/participants:
+    get:
+      tags:
+        - Account Participants
+      summary: Retrieve participants for an Account
+      description: Retrieve participants for an Account
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/participant-list'
+    post:
+      tags:
+        - Account Participants
+      summary: Add a new Participant to an Account
+      description: >-
+        Add a new Participant to an Account, where the Participant must be a
+        valid Consumer
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        description: New Participant for an account
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-participant'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  participant:
+                    $ref: '#/components/schemas/participant'
+  /accounts/{accountId}/participants/{participantId}:
+    delete:
+      tags:
+        - Account Participants
+      summary: Remove a Participant from an Account
+      description: Remove a Participant from an Account
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/participantId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '204':
+          description: OK
+  /accounts/{accountId}/blocks:
+    post:
+      tags:
+        - Account Blocks
+      summary: Create an Account Block
+      description: Create an Account Block
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      requestBody:
+        description: The new Account Block
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/new-block'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  block:
+                    $ref: '#/components/schemas/block'
+    get:
+      tags:
+        - Account Blocks
+      summary: Retrieve all the Blocks for an Account
+      description: Retrieve all the Blocks for an Account
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/block-list'
+  /accounts/{accountId}/blocks/{blockId}:
+    delete:
+      tags:
+        - Account Blocks
+      summary: Delete an Account Block
+      description: >
+        Deletes an Account Block by creating a new Account Block with status
+        equal to  cancelled which removes the Account Block.
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/blockId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '204':
+          description: OK
+  /accounts/{accountId}/statements:
+    get:
+      tags:
+        - Account Statements
+      summary: Rerieve a list of the Account Statements
+      description: Retrieve a list of the Account Statements
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/statement-list'
+  /accounts/{accountId}/statements/{statementId}:
+    get:
+      tags:
+        - Account Statements
+      summary: Retrieve an Account Statement
+      description: Retrieve an Account Statement
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/statementId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  statement:
+                    $ref: '#/components/schemas/statement'
+  /accounts/{accountId}/transactions:
+    get:
+      tags:
+        - Transaction
+      summary: Retrieve the transactions for an account
+      description: Retrieve the transactions for an account
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+        - $ref: '#/components/parameters/xRequestId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transaction-list'
+components:
+  securitySchemes:
+    main_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://example.com/api/oauth/dialog
+          scopes:
+            read:users: read users info
+            write:users: modify or remove users
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic
+  parameters:
+    xRequestId:
+      name: X-Request-Id
+      in: header
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: ad52e774-753c-4633-ba2a-561a1b98387b
+        description: Unique client provided uuid required for idempotent requests
+    xConsumerId:
+      name: X-Consumer-Id
+      in: header
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: ad52e774-753c-4633-ba2a-561a1b98387b
+        description: Unique consumer uuid
+    consumerId:
+      name: consumerId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: 978268d4-ad96-4574-b257-0aa805e41197
+    addressId:
+      name: addressId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: 304a2ce5-8c36-4d5e-a66e-7d15a7eb9506
+    contactId:
+      name: contactId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: c9ef37de-e3ff-45a7-b7a5-f12d389ed27e
+    businessId:
+      name: businessId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: c134f611-c064-43b8-9536-63a2709a6a10
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: abca1d03-d85f-4c80-955b-1d392fab1d90
+    participantId:
+      name: participantId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: b1a2f0de-ac4b-44b9-8ec0-12c794e0fb75
+    blockId:
+      name: blockId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: abca1d03-d85f-4c80-955b-1d392fab1d90
+    statementId:
+      name: statementId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: uuid
+        example: abca1d03-d85f-4c80-955b-1d392fab1d90
+  schemas:
+    new-contact:
+      type: object
+      required:
+        - type
+        - value
+      properties:
+        type:
+          type: string
+          enum:
+            - email
+            - phone
+          example: email
+        value:
+          type: string
+          maxLength: 128
+          example: john.doe@email.com
+    country:
+      type: string
+      enum:
+        - USA
+        - CAN
+        - MEX
+      example: USA
+    occupation:
+      type: string
+      enum:
+        - finance_accounting_tax
+        - lawyer
+      example: finance_accounting_tax
+    income:
+      type: string
+      enum:
+        - SALARY
+        - INHERITED
+      example: SALARY
+    expected-activity:
+      type: string
+      enum:
+        - CASH
+        - SAVINGS
+      example: CASH
+    state:
+      type: string
+      enum:
+        - CA
+        - OR
+        - WA
+        - NY
+      example: CA
+    new-address:
+      type: object
+      required:
+        - type
+        - line1
+        - city
+        - state
+        - zip_code
+      properties:
+        type:
+          type: string
+          enum:
+            - LEGAL
+            - POBOX
+          example: LEGAL
+        line1:
+          type: string
+          maxLength: 128
+          example: 1 Market St.
+        line2:
+          type: string
+          maxLength: 128
+        city:
+          type: string
+          maxLength: 128
+          example: San Francisco
+        state:
+          type: string
+          $ref: '#/components/schemas/state'
+        zip_code:
+          type: string
+          pattern: ^d{5}$
+          example: '94105'
+    new-driver-license:
+      type: object
+      required:
+        - number
+        - state
+        - country
+        - issue_date
+        - expiration_date
+      properties:
+        number:
+          type: string
+          minLength: 4
+          maxLength: 32
+          example: CA94105
+        state:
+          $ref: '#/components/schemas/state'
+        country:
+          $ref: '#/components/schemas/country'
+        issue_date:
+          type: string
+          format: date
+          example: 2017-07-21
+        expiration_date:
+          type: string
+          format: date
+          example: 2027-07-21
+    new-passport:
+      type: object
+      required:
+        - number
+        - country
+        - issue_date
+        - expiration_date
+      properties:
+        number:
+          type: string
+          minLength: 4
+          maxLength: 32
+          example: CA94105
+        state:
+          $ref: '#/components/schemas/state'
+        country:
+          $ref: '#/components/schemas/country'
+        issue_date:
+          type: string
+          format: date
+          example: 2017-07-21
+        expiration_date:
+          type: string
+          format: date
+          example: 2027-07-21
+    new-consumer:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - ssn
+        - dob
+        - contact
+        - citizenship_status
+        - citizen_country
+        - occupation
+        - income
+        - expected_activity
+        - address
+        - identification
+      properties:
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string
+          example: Doe
+        ssn:
+          type: string
+          pattern: ^\d{3}-\d{2}-\d{4}$
+          example: 555-44-9898
+        dob:
+          type: string
+          pattern: ^\d{4}-\d{2}-\d{2}$
+          example: 1998-03-17
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/new-contact'
+        citizenship_status:
+          type: string
+          enum:
+            - us_citizen
+            - non_us_citizen
+        citizenship_country:
+          $ref: '#/components/schemas/country'
+        occupation:
+          $ref: '#/components/schemas/occupation'
+        income:
+          $ref: '#/components/schemas/income'
+        expected_activity:
+          $ref: '#/components/schemas/expected-activity'
+        address:
+          $ref: '#/components/schemas/new-address'
+        identification:
+          type: object
+          properties:
+            document_type:
+              type: string
+              enum:
+                - driver_license
+                - passport
+            document:
+              oneOf:
+                - $ref: '#/components/schemas/new-driver-license'
+                - $ref: '#/components/schemas/new-passport'
+    consumer:
+      type: object
+      required:
+        - id
+      allOf:
+        - $ref: '#/components/schemas/new-consumer'
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+    error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    address:
+      type: object
+      required:
+        - id
+      allOf:
+        - $ref: '#/components/schemas/new-address'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for an address
+          example: a455f1ee-6c54-4b01-90e6-d701748f0851
+    address-list:
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/address'
+    contact:
+      type: object
+      required:
+        - id
+      allOf:
+        - $ref: '#/components/schemas/new-contact'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the consumer contact details.
+          example: 22fac974-9cac-49e9-94db-9bd107a7d0fe
+    contact-list:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/contact'
+    NewDocument:
+      type: object
+      required:
+        - file
+        - file_type
+        - verify_idv
+      properties:
+        file:
+          type: string
+          format: byte
+          description: A base64 encoded string of the document.
+        file_type:
+          type: string
+          enum:
+            - application/pdf
+            - jpg
+            - png
+          description: >-
+            Specify the type of the file. Supported file types are pdf, jpg, and
+            png.
+          example: application/pdf
+        verify_idv:
+          type: string
+          enum:
+            - ssn
+          description: Fields that are being verified in the document
+          example: ssn
+    new-business-member:
+      type: object
+      required:
+        - user_id
+        - user_type
+        - title
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          description: >
+            Unique identifier for user w/ access to the business account. User
+            must already be registered in system.
+          example: a1c011b5-cc1c-4917-b96a-ecd49de39d1a
+        user_type:
+          type: string
+          enum:
+            - control_manager
+          example: control_manager
+        title:
+          type: string
+          maxLength: 128
+          example: The Big Cheese
+        title_description:
+          type: string
+          maxLength: 256
+          example: In charge of all the moolah
+    business-entity-formation:
+      type: object
+      required:
+        - document
+        - number
+        - issuer
+        - issue_date
+        - expiration_date
+        - business_operation
+        - origin_state
+        - origin_country
+        - origin_date
+      properties:
+        document:
+          type: string
+          enum:
+            - certificate_of_limited_partnership
+          description: Business registration document fields
+          example: certificate_of_limited_partnership
+        number:
+          type: string
+          maxLength: 128
+          description: Business identifier provided by issuer of the document
+          example: 123456789012339
+        state:
+          $ref: '#/components/schemas/state'
+        country:
+          $ref: '#/components/schemas/country'
+        issuer:
+          type: string
+          minLength: 2
+          maxLength: 64
+          description: Government or agency that issued the business registration document.
+          example: CA
+        issue_date:
+          type: string
+          format: date
+          description: The date the business was registered by the government
+          example: 2021-03-17
+        expiration_date:
+          type: string
+          format: date
+          description: The date the business registration document expires
+          example: 2031-03-17
+        business_operation:
+          type: string
+          enum:
+            - local_business
+          description: Describes the business operations
+          example: local_business
+        origin_country:
+          $ref: '#/components/schemas/country'
+        origin_state:
+          $ref: '#/components/schemas/state'
+    business-entity-questions:
+      type: object
+      properties:
+        affiliate:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        private_atm:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        internet_gambling:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        internet_gambling_agreement":
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        internet_gambling_notification:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        check_casher:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        check_casher_greater_allowed_amount:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        international_affairs:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        card_games:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        pep:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+        attestation:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+    new-business:
+      type: object
+      required:
+        - legal_name
+        - tin_type
+        - tin_number
+      properties:
+        legal_name:
+          type: string
+          maxLength: 128
+          example: Acme LLC.
+        tin_type:
+          type: string
+          enum:
+            - ein
+          example: ein
+        tin_number:
+          type: string
+          example: XYZ987654321
+        entity_type:
+          type: string
+          enum:
+            - sole_proprietor
+            - llc
+            - corporation
+        industry_type:
+          type: string
+          enum:
+            - colleges_universities_and_schools
+            - financial_services
+            - travel
+            - consumer_goods
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/new-contact'
+        purpose:
+          type: string
+          enum:
+            - registrationPurpose
+        expected_activities:
+          type: string
+          enum:
+            - check
+            - unknown
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/new-business-member'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/new-address'
+        entity_formation:
+          $ref: '#/components/schemas/business-entity-formation'
+        questions:
+          $ref: '#/components/schemas/business-entity-questions'
+    business:
+      type: object
+      required:
+        - id
+      allOf:
+        - $ref: '#/components/schemas/new-business'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the business
+          example: dd1ebb85-dc27-46ba-a4ac-3d3f38dcde2c
+    business-member:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the business
+      allOf:
+        - $ref: '#/components/schemas/new-business-member'
+    business-member-list:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/business-member'
+    new-participant:
+      type: object
+      properties:
+        participant_user_id:
+          type: string
+          format: uuid
+          description: Unique Consumer Id for the account participant
+          example: 639f313f-6187-4adc-b898-935f8d20db0b
+        participant_role:
+          type: string
+          enum:
+            - holder
+            - authorized
+            - beneficiary
+          example: holder
+    new-account:
+      type: object
+      required:
+        - account_type
+      properties:
+        account_type:
+          type: string
+          enum:
+            - Checking
+            - Savings
+          description: Either checking or savings account
+          example: checking
+        multiple_participants:
+          type: string
+          format: boolean
+          example: false
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/new-participant'
+    currency:
+      type: string
+      enum:
+        - USD
+        - CAN
+        - EUR
+    account:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 671c272f-370f-40f9-b863-7531aa696b4a
+        account_number:
+          type: string
+          maxLength: 9
+          description: Bank account number
+          example: X23456789
+        routing_number:
+          type: string
+          maxLength: 9
+          description: Bank routing number required for ACH transfers
+          example: 987654321
+        currency:
+          $ref: '#/components/schemas/currency'
+        name_on_account:
+          type: string
+          maxLength: 64
+          description: Name of the account owner
+          example: John Doe
+        account_status:
+          type: string
+          enum:
+            - open
+            - blocked
+            - closed
+          example: open
+        account_status_reason:
+          type: string
+          enum:
+            - customer_request
+          example: customer_request
+        nickname:
+          type: string
+          minLength: 4
+          maxLength: 64
+          description: User defined nickname for the account.
+          example: John Doe Checking Account
+        usage:
+          type: string
+          enum:
+            - send_and_receive
+      allOf:
+        - $ref: '#/components/schemas/new-account'
+    account-list:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/account'
+    update-account:
+      type: object
+      properties:
+        account_status:
+          type: string
+          enum:
+            - open
+            - blocked
+            - closed
+          example: open
+        account_status_reason:
+          type: string
+          enum:
+            - customer_request
+          example: customer_request
+        nickname:
+          type: string
+          minLength: 4
+          maxLength: 64
+          description: User defined nickname for the account.
+          example: John Doe Checking Account
+    participant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique id for participant
+          example: ba99c741-b7a2-4ed8-a5ee-1081620bd896
+      allOf:
+        - $ref: '#/components/schemas/new-participant'
+    participant-list:
+      type: object
+      properties:
+        participancts:
+          type: array
+          items:
+            $ref: '#/components/schemas/participant'
+    new-block:
+      type: object
+      required:
+        - block_type
+      properties:
+        block_type:
+          type: string
+          enum:
+            - credits
+            - debits
+            - checks
+            - all
+          description: Specifies types of transactions that are blocked
+          example: debits
+        block_reason:
+          type: string
+          maxLength: 64
+          description: Reason for Account Block
+          example: Suspected fraud
+    block:
+      type: object
+      required:
+        - id
+      allOf:
+        - $ref: '#/components/schemas/new-block'
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for an Account Block
+          example: 6b66bcc3-8e61-455f-97fa-5d276bd20d34
+        block_status:
+          type: string
+          enum:
+            - active
+            - cancelled
+          description: The Account Block status
+          example: cancelled
+    block-list:
+      type: object
+      properties:
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/block'
+          description: All of the Account Blocks added to an Account
+    statement-metadata:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique statement identifier
+          example: d3a37d65-9214-4741-b847-f79d693c6ffd
+        start_date:
+          type: string
+          format: date
+          description: Starting date for the Account Statement
+          example: 2021-10-01
+        end_date:
+          type: string
+          format: date
+          description: Ending date for the Account Statement
+          example: 2021-10-31
+    statement-list:
+      type: object
+      description: List of account statements
+      properties:
+        statements:
+          type: array
+          items:
+            $ref: '#/components/schemas/statement-metadata'
+    statement:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/statement-metadata'
+      properties:
+        content_type:
+          type: string
+          enum:
+            - application/pdf
+          description: The format for the document.
+          example: /application/pdf
+        document:
+          type: string
+          format: byte
+          description: Document formatted as a Base64 string
+    transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: dfb5dfaf-7f11-4f34-a218-89ef02b7279d
+        date:
+          type: string
+          format: date
+          example: 2021-12-08
+        description:
+          type: string
+          maxLength: 256
+          example: Target
+        transaction_type:
+          type: string
+          enum:
+            - debit
+            - credit
+          example: debit
+        amount:
+          type: number
+          format: float
+          example: 55.45
+    transaction-list:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/transaction'
+  responses:
+    '400':
+      description: |
+        API request had an invalid resource identifier or invalid request body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+          example:
+            code: 400
+            message: Invalid resource id, invalid request body
+    '401':
+      description: |
+        User was unauthenticated
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+          example:
+            code: 401
+            message: User was not authenticated
+    '403':
+      description: |
+        User does not have access to the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+          example:
+            code: 403
+            message: Access to resource is forbidden
+    '404':
+      description: |
+        The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+          example:
+            code: 404
+            message: Resource Not Found
+    '500':
+      description: |
+        Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+          example:
+            code: 500
+            message: Server Error
